@@ -31,6 +31,9 @@ try {
     $resultado = $consulta->fetchAll();
 
     foreach ($resultado as $row){
+        $dataArray = explode("-", $row['dataNascimento']);
+        $dataConvertida = $dataArray[2]."/".$dataArray[1]."/".$dataArray[0];
+
         echo "<div class='formulario'>
         <form name='form' method='POST' action='alterarDados.php'>";
         echo "<p>Id do aluno</p>
@@ -44,7 +47,10 @@ try {
             <p>Selecione o Turno:<br>
                 <input class='campo' name='turno' type='radio' id='turno' value='manha'>Manhã
                 <input class='campo' name='turno' type='radio' id='turno' value='tarde'>Tarde
-                <input class='campo' name='turno' type='radio' id='turno' value='noite'>Noite</p>       
+                <input class='campo' name='turno' type='radio' id='turno' value='noite'>Noite</p>  
+            <p>Data de nascimento:<br>
+                <input type='text' name='dataNascimento' size='10' maxlength='10' minlength='10' value='$dataConvertida'> </p>
+            </p>     
             <input type='submit' name='Botao' value='Alterar'>
             <input type='submit' name='Botao' value='Excluir'>
         </form>

@@ -13,14 +13,18 @@
 
     <ul class="menu">
 			<ul class="itens" id="menu1"><a href="paginaInicial.html">Página inicial</a></ul>
-			<ul class="itens" id="menu1"><a href="consultarAluno.php">Consultar Alunos</a></ul>
+			<ul class="itens" id="menu2"><a href="consultarAluno.php">Consultar Alunos</a></ul>
     </ul>
 <?php
 
 $nome = $_POST['nome'];
 $endereco = $_POST['endereco'];
 $turma = $_POST['turma'];
+$dataNascimento = $_POST['dataNascimento'];
 $botao = $_POST['Botao'];
+
+$dataArray = explode("/", $dataNascimento);
+$dataConvertida = $dataArray[2]."-".$dataArray[1]."-".$dataArray[0];
 
 if ($botao == 'Cadastrar'){
 	$turno = $_POST['turno'];
@@ -29,7 +33,7 @@ if ($botao == 'Cadastrar'){
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
-	$inserir=$pdo->prepare("Insert into alunos(nome, endereco, turma, turno) Values('$nome', '$endereco', '$turma', '$turno');");
+	$inserir=$pdo->prepare("Insert into alunos(nome, endereco, turma, turno, dataNascimento) Values('$nome', '$endereco', '$turma', '$turno', '$dataConvertida');");
 	$inserir->execute();
 	$pdo = null;
 	echo "<p>Aluno adicionado com sucesso</p>";
@@ -42,7 +46,7 @@ if ($botao == 'Cadastrar'){
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
-	$inserir=$pdo->prepare("update alunos set nome='$nome', endereco='$endereco', turma='$turma', turno='$turno' where id_alunos = $id_alunos;");
+	$inserir=$pdo->prepare("update alunos set nome='$nome', endereco='$endereco', turma='$turma', turno='$turno', dataNascimento='$dataConvertida' where id_alunos = $id_alunos;");
 	$inserir->execute();
 	$pdo = null;
 	echo "<p>Dados de aluno alterado com sucesso</p>";

@@ -11,8 +11,9 @@
         <h1>Consulta de Aluno</h1>
     </div>
     <ul class="menu">
-            <ul class="itens" id="menu1"><a href="paginaInicial.html">Tela inicial</a></ul>
-</ul>
+        <ul class="itens" id="menu1"><a href="paginaInicial.html">Página inicial</a></ul>
+        <ul class="itens" id="menu2"><a href="consultarAluno.php">Consultar Alunos</a></ul>
+    </ul>
 <?php
 
 	try{
@@ -33,14 +34,19 @@ echo "<table border='1'>
                 <td>Endereço</td>
                 <td>Turma</td>
                 <td>Turno</td>
+                <td>Data de Nascimento</td>
             </tr>";
 foreach ($result as $row) {
+    $dataArray = explode("-", $row['dataNascimento']);
+    $dataConvertida = $dataArray[2]."/".$dataArray[1]."/".$dataArray[0];
+    
     echo "<tr>
             <td><a href=editarAluno.php?id_alunos=$row[id_alunos]>$row[id_alunos]</a></td>
             <td>$row[nome]</td>
             <td>$row[endereco]</td>
             <td>$row[turma]</td>
             <td>$row[turno]</td>
+            <td>$dataConvertida</td>
         </tr>";
 }
 echo "</table>";
