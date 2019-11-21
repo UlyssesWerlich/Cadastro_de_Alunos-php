@@ -1,20 +1,6 @@
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Curso de PHP com MySQL</title>
-    <link rel="stylesheet" href="estilo.css"/>
-
-</head>
-
-<body>
-    <div id="cabecalho">
-        <h1>Consulta de Aluno</h1>
-    </div>
-    <ul class="menu">
-        <ul class="itens" id="menu1"><a href="paginaInicial.html">Página inicial</a></ul>
-        <ul class="itens" id="menu2"><a href="consultarAluno.php">Consultar Alunos</a></ul>
-    </ul>
 <?php
+    $tituloCabecalho = "Consulta de aluno";
+    include('cabecalho.php');
 
 	try{
 		$pdo=new PDO("mysql:host=localhost;dbname=focus","root","password");

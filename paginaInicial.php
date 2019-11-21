@@ -1,20 +1,7 @@
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Curso de PHP com MySQL</title>
-    <link rel="stylesheet" href="estilo.css"/>
-
-</head>
-
-<body>
-    <div id="cabecalho">
-        <h1>Cadastro de Aluno</h1>
-    </div>
-
-    <ul class="menu">
-            <ul class="itens" id="menu1"><a href="paginaInicial.html">Página inicial</a></ul>
-            <ul class="itens" id="menu2"><a href="consultarAluno.php">Consultar Alunos</a></ul>
-    </ul>
+<?php
+    $tituloCabecalho = "Cadastro de aluno";
+    include('cabecalho.php');
+?>
 
     <div class="formulario">
         <form name="form2" method="POST" action="alterarDados.php">
